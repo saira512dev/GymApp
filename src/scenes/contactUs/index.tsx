@@ -48,7 +48,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           <HText>
             <span className="text-primary-500">JOIN NOW</span> TO GET IN SHAPE
           </HText>
-          <p className="my-5">
+          <p className="my-5 md:w-2/4">
             Join now and take the first step toward a stronger, healthier you.
             Our expert-led classes and supportive community are here to help you
             achieve your fitness goals—no matter where you're starting from.
