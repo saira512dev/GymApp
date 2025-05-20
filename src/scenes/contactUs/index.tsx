@@ -124,7 +124,6 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                     "Max length is a 2000 characters."}
                 </p>
               )}
-              {/* <input type="hidden" name="_next" value="https://localhost:5173" /> */}
 
               <button
                 type="submit"
