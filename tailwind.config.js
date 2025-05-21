@@ -14,6 +14,9 @@ module.exports = {
         "secondary-400": "#FFCD5B",
         "secondary-500": "#FFC132",
       },
+      boxShadow: {
+        'primary': '0 4px 10px rgba(255, 107, 102, 0.4)', // your primary-500
+      },
       backgroundImage: (theme) => ({
         "gradient-yellowred": "linear-gradient(90deg, #FF616A 0%, #FFC837 100%)",
         "mobile-home": "url('./assets/HomePageGraphic.png')",

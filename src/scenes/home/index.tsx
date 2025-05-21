@@ -84,7 +84,7 @@ function Home({ setSelectedPage }: Props) {
           <img
             src={HomePageGraphic}
             alt="home-page-graphic"
-            className="min-w-[250px] sm:min-w-[290px]"
+            className="min-w-[250px] sm:min-w-[290px] bg-gray-20"
           />
         </div>
       </motion.div>
