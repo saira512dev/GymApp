@@ -106,3 +106,26 @@ export const testimonialsData: TestimonialType[] = [
     content: "Their meal planning service helped me lose 18% body fat while maintaining muscle. Life-changing guidance!"
   }
 ];
+
+export const faqs = [
+  {
+    question: "How many days should I work out each week?",
+    answer: "For most people, 3–5 days per week of exercise is optimal for strength and recovery.",
+  },
+  {
+    question: "Can I build muscle without going to the gym?",
+    answer: "Yes! Bodyweight exercises, resistance bands, and proper nutrition are enough to build muscle at home.",
+  },
+  {
+    question: "What should I eat before and after a workout?",
+    answer: "Before: light carbs + protein (like oats & banana). After: protein-rich meal with some carbs to refuel.",
+  },
+  {
+    question: "Do I get to buy a trial plan to figure out if this works for me?",
+    answer: "Absolutely! Get in touch with our team and let's figure out if this works for you.",
+  },
+  {
+    question: "Is the workout plan beginner-friendly?",
+    answer: "Yes! The program starts with easy exercises like incline push-ups and gradually increases in difficulty.",
+  },
+];
