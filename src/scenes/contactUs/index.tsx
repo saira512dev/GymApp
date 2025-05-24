@@ -1,6 +1,7 @@
 import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png";
 import HText from "@/shared/HText";
 
@@ -10,18 +11,47 @@ type Props = {
 
 const ContactUs = ({ setSelectedPage }: Props) => {
   const inputStyles = `mb-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`;
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const {
     register,
+    handleSubmit,
     trigger,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = async (data: any) => {
     const isValid = await trigger();
-    if (!isValid) {
-      e.preventDefault();
+    if (!isValid) return;
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/638638d47b67c85bbccd999e3f84fca1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (response.ok) {
+        setShowSuccess(true);
+        reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
     }
+  };
+
+  // 🔧 Clear success message when typing
+  const handleInputChange = () => {
+    if (showSuccess) setShowSuccess(false);
   };
 
   return (
@@ -33,7 +63,6 @@ const ContactUs = ({ setSelectedPage }: Props) => {
         onViewportEnter={() => setSelectedPage(SelectedPage.ContactUs)}
       >
         {/* HEADER */}
-
         <motion.div
           className="m:w-3/5"
           initial="hidden"
@@ -68,36 +97,31 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <form
-              target="_blank"
-              method="POST"
-              onSubmit={onSubmit}
-              action="https://formsubmit.co/638638d47b67c85bbccd999e3f84fca1"
-            >
+            <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 type="text"
                 className={inputStyles}
                 placeholder="NAME"
-                {...register("name", {
-                  required: true,
-                  maxLength: 100,
-                })}
+                {...register("name", { required: true, maxLength: 100 })}
+                onChange={handleInputChange} // 🔧
               />
               {errors.name && (
                 <p className="mt-1 text-primary-500">
                   {errors.name.type === "required" && "This field is required."}
                   {errors.name.type === "maxLength" &&
-                    "Max length is a 100 characters."}
+                    "Max length is 100 characters."}
                 </p>
               )}
+
               <input
-                type="text"
+                type="email"
                 className={inputStyles}
                 placeholder="EMAIL"
                 {...register("email", {
                   required: true,
-                  pattern: /^[A-Z0-9,_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 })}
+                onChange={handleInputChange} // 🔧
               />
               {errors.email && (
                 <p className="mt-1 text-primary-500">
@@ -106,33 +130,39 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                   {errors.email.type === "pattern" && "Invalid Email Address."}
                 </p>
               )}
+
               <textarea
                 rows={4}
                 cols={50}
                 className={inputStyles}
                 placeholder="MESSAGE"
-                {...register("message", {
-                  required: true,
-                  maxLength: 100,
-                })}
+                {...register("message", { required: true, maxLength: 1000 })}
+                onChange={handleInputChange} // 🔧
               />
               {errors.message && (
                 <p className="mt-1 text-primary-500">
                   {errors.message.type === "required" &&
                     "This field is required."}
                   {errors.message.type === "maxLength" &&
-                    "Max length is a 2000 characters."}
+                    "Max length is 1000 characters."}
                 </p>
               )}
 
               <button
                 type="submit"
-                className="mt-5 rounded-lg bg-secondary-500 px-20 py-3 transition duration-500 hover:text-white "
+                className="mt-5 rounded-lg bg-secondary-500 px-20 py-3 transition duration-500 hover:text-white"
               >
                 SUBMIT
               </button>
             </form>
+
+            {showSuccess && (
+              <div className="text-green-600 text-lg font-semibold mt-10">
+                🎉 Thank you! Your message has been sent successfully.
+              </div>
+            )}
           </motion.div>
+
           <motion.div
             className="relative mt-16 basis-2/5 md:mt-0"
             initial="hidden"
