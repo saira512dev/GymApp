@@ -1,6 +1,6 @@
 ## GYM APP
 
-![image](assets/dashboardAdmin.png)
+![image](assets/GymApp.png)
 
 ### Description :
 
