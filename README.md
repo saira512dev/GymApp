@@ -1,54 +1,39 @@
-# React + TypeScript + Vite
+## GYM APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![image](assets/dashboardAdmin.png)
 
-Currently, two official plugins are available:
+### Description :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a responsive and modern frontend gym landing page. The design is clean and professional, built with accessibility and visual appeal in mind. It allows users to explore available workout programs, gym benefits, testimonials, and contact information. The UI adapts to various screen sizes and includes subtle animations and color transitions.
 
-## Expanding the ESLint configuration
+The project is built using React and Tailwind CSS, with a strong focus on layout, consistency, and performance.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Link to project: https://get-fit-go.netlify.app/
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### How It's Made:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Tech used: React JS, Tailwind CSS, TypeScript, Shadcn/UI (for components)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Design Highlights
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+\*Custom color palette (reds and warm tones).
+
+\*Fully responsive layout, Dark and light gradient backgrounds.
+
+\*Scroll and hover animations using Framer Motion.
+
+\*Reusable components and clear folder structure.
+
+### Optimizations
+
+\*Backend integration for contact form (via Appwrite or Firebase).
+
+\*Add user authentication and program enrollment features.
+
+### Lessons Learned
+
+\*Practiced modular component-based design using Tailwind and React.
+
+\*Learned how to design and maintain a consistent UI across breakpoints.
+
+\*Gained experience in using Framer Motion for subtle and effective animations.
